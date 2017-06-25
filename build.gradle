@@ -1,0 +1,21 @@
+apply plugin: 'com.esri.arcgisruntime.java'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://esri.bintray.com/arcgis'
+        }
+    }
+    dependencies {
+        classpath 'com.esri.arcgisruntime:gradle-arcgis-java-plugin:1.0.0'
+    }
+}
+
+run {
+    mainClassName = project.hasProperty("mainClass") ? mainClass : 'Map'
+}
+
+arcgis.version = '100.0.0'
