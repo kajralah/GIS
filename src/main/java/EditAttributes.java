@@ -87,14 +87,14 @@ public class EditAttributes {
 		      types.add("Armored Cavalry Company");
 		      types.add("TAC");
 
-		      comboBox = new ComboBox<>(types);
-		      comboBox.setMaxWidth(Double.MAX_VALUE);
-		      comboBox.setTooltip(new Tooltip("Type of units"));
-		      comboBox.setDisable(true);
+		      final ComboBox<String> comboBoxNew = new ComboBox<>(types);
+		      comboBoxNew.setMaxWidth(Double.MAX_VALUE);
+		      comboBoxNew.setTooltip(new Tooltip("Type of units"));
+		      comboBoxNew.setDisable(true);
 
-		      comboBox.showingProperty().addListener((obs, wasShowing, isShowing) -> {
+		      comboBoxNew.showingProperty().addListener((obs, wasShowing, isShowing) -> {
 		        try {
-		          updateAttributes((ArcGISFeature) selected, militaryLayer,militaryTable,militaryTable2,comboBox,comboBox2);
+		          updateAttributes((ArcGISFeature) selected, militaryLayer,militaryTable,militaryTable2,comboBoxNew,comboBox2);
 		        } catch (Exception e) {
 		        	e.getStackTrace();
 		        }
@@ -109,20 +109,20 @@ public class EditAttributes {
 			    		  "Tomcat","Tanking","Datum","Lost Contact","Search","Search Area","Rescue Control Point",
 			    		  "Predicted Impact Point");
 
-			      comboBox2 = new ComboBox<>(types2);
-			      comboBox2.setMaxWidth(Double.MAX_VALUE);
-			      comboBox2.setTooltip(new Tooltip("Type of operation poins"));
-			      comboBox2.setDisable(true);
+			      ComboBox<String> comboBoxNew2 = new ComboBox<>(types2);
+			      comboBoxNew2.setMaxWidth(Double.MAX_VALUE);
+			      comboBoxNew2.setTooltip(new Tooltip("Type of operation poins"));
+			      comboBoxNew2.setDisable(true);
 
-			      comboBox2.showingProperty().addListener((obs, wasShowing, isShowing) -> {
+			      comboBoxNew2.showingProperty().addListener((obs, wasShowing, isShowing) -> {
 			        try {
-				          updateAttributes((ArcGISFeature) selected2, militaryLayer,militaryTable,militaryTable2,comboBox,comboBox2);
+				          updateAttributes((ArcGISFeature) selected2, militaryLayer,militaryTable,militaryTable2,comboBoxNew,comboBoxNew2);
 			        } catch (Exception e) {
 			        	e.getStackTrace();
 			        }
 			      });
 
-		      vBoxControl.getChildren().addAll(Label1,comboBox,Label2,comboBox2);
+		      vBoxControl.getChildren().addAll(Label1,comboBoxNew,Label2,comboBoxNew2);
 	  }
 	
 }
